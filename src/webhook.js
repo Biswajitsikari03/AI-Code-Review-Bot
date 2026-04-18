@@ -1,12 +1,10 @@
 import { createHmac } from "crypto";
-import { Octokit } from "@octokit/core";
-import { reviewCode } from "./reviewer.js";
 import { App } from "@octokit/app";
-import { readFileSync } from "fs";
+import { reviewCode } from "./reviewer.js";
 
 const app = new App({
   appId: process.env.APP_ID,
-  privateKey: readFileSync(process.env.PRIVATE_KEY_PATH, "utf8"),
+  privateKey: process.env.PRIVATE_KEY,
   webhooks: { secret: process.env.WEBHOOK_SECRET }
 });
 
@@ -35,12 +33,8 @@ export function setupWebhooks(expressApp) {
       res.status(200).send("OK");
 
       try {
-        console.log("Getting installation ID...");
         const installationId = payload.installation.id;
-        console.log(`Installation ID: ${installationId}`);
-
         const octokit = await app.getInstallationOctokit(installationId);
-        console.log("Got octokit instance");
 
         const owner = payload.repository.owner.login;
         const repo = payload.repository.name;
