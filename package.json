@@ -1,0 +1,17 @@
+{
+  "name": "ai-code-bot",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "dependencies": {
+    "@octokit/app": "^15.1.1",
+    "@octokit/webhooks": "^13.4.2",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "groq-sdk": "^1.1.2",
+    "smee-client": "^2.0.3"
+  }
+}
