@@ -20,7 +20,7 @@ export function setupWebhooks(app) {
 
     console.log(`Received event: ${event}`);
 
-    if (event === 'pull_request' && payload.action === 'opened') {
+   if (event === "pull_request" && (payload.action === "opened" || payload.action === "synchronize")) {
       console.log(`New PR: ${payload.pull_request.title}`);
       console.log(`Repo: ${payload.repository.full_name}`);
       console.log(`PR Number: ${payload.number}`);
