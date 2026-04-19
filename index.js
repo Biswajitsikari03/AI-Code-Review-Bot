@@ -19,4 +19,9 @@ setupWebhooks(app);
 
 app.listen(process.env.PORT, () => {
   console.log(`Bot running on port ${process.env.PORT}`);
+}
+
+app.get("/", (req, res) => {
+  res.send("Chaseot AI Code Review Bot is running 🤖");
 });
+);
