@@ -6,6 +6,10 @@ import { setupWebhooks } from "./webhook.js";
 const app = express();
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("Chaseot AI Code Review Bot is running ??");
+});
+
 setupWebhooks(app);
 
 const server = createServer(app);
